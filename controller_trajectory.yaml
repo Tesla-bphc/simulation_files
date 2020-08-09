@@ -1,0 +1,63 @@
+grid:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50 
+
+  x_plotter_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_fixed_base__x_plotter
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  y_plotter_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_x_plotter__y_plotter
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  z_plotter_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_y_plotter__z_plotter
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  
+  
+  
+  
+  
+  joint_z_plotter__TR_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_z_plotter__TR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_TR__RR_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_TR__RR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_RR__GR_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_RR__GR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_gripper_base__gripper_gear_r_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_gripper_base__gripper_gear_r
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_gripper_gear_r__gripper_main_r_front_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_gripper_gear_r__gripper_main_r_front
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_gripper_gear_r__gripper_main_r_back_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_gripper_gear_r__gripper_main_r_back
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_gripper_base__gripper_gear_l_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_gripper_base__gripper_gear_l
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_gripper_gear_l__gripper_main_l_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_gripper_gear_l__gripper_main_l
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint_gripper_base__gripper_support_l_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_gripper_base__gripper_support_l
+    pid: {p: 100.0, i: 0.01, d: 10.0}  
+  joint_gripper_base__gripper_support_r_controller:
+    type: position_controllers/JointPositionController
+    joint: joint_gripper_base__gripper_support_r
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+   

@@ -1,0 +1,38 @@
+<launch>
+
+<!-- Load the CougarBot URDF model into the parameter server -->
+<!-- <node name="xacro_to_urdf" pkg="grid_arm_full_24" type="xacro_to_urdf.bash" /> -->
+<param name="robot_description" textfile="$(find grid_arm_full_24)/urdf/grid_arm_full.urdf" />
+<!-- Start Gazebo with an empty world -->
+<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false"
+args="-param robot_description -urdf -model grid_arm" />
+
+<rosparam file="$(find grid_arm_full_24)/config/controller_trajectory.yaml" command="load"/>
+  <param name="ball" textfile="$(find grid_arm_full_24)/sdf/ball.sdf" />
+  <node name="ball" pkg="gazebo_ros" type="spawn_model" args="-sdf -param ball -model ball" respawn="false" output="screen" />
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" 
+	ns="/grid" respawn="false"
+args="
+x_plotter_controller
+y_plotter_controller
+z_plotter_controller
+joint_z_plotter__TR_controller
+joint_TR__RR_controller
+joint_RR__GR_controller
+joint_gripper_base__gripper_gear_r_controller
+joint_gripper_gear_r__gripper_main_r_front_controller
+joint_gripper_gear_r__gripper_main_r_back_controller
+joint_gripper_base__gripper_gear_l_controller
+joint_gripper_gear_l__gripper_main_l_controller
+joint_gripper_base__gripper_support_l_controller
+joint_gripper_base__gripper_support_r_controller"/>
+
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+</node>
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+
+  </node>
+</launch>

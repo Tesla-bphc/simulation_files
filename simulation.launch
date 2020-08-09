@@ -1,0 +1,17 @@
+<launch>
+    <node
+    name="object_detection"
+    pkg="grid_arm_full_24"
+    type="object_detection_arm.py"
+    output="screen" />
+    <node
+    name="distance_estimation"
+    pkg="grid_arm_full_24"
+    type="distance_calculation.py"
+    output="screen" />
+    <node
+    name="robot_control"
+    pkg="grid_arm_full_24"
+    type="x_y.py"
+    output="screen" />
+</launch>
